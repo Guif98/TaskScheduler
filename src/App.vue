@@ -1,19 +1,23 @@
 <template>
   <div class="container">
     <Header title="Lista de Tarefas"/>
-    <Tasks @delete-task="deleteTask" :tasks="tasks" />
+    <AddTask @add-task="addTask" />
+    <Tasks @toggle-reminder="toggleReminder" 
+    @delete-task="deleteTask" :tasks="tasks" />
   </div>
 </template>
 
 <script>
   import Header from './components/Header'
   import Tasks from './components/Tasks'
+  import AddTask from './components/AddTask'
 
 export default {
   name: 'App',
   components: {
     Header,
     Tasks,
+    AddTask,
   },
   data() {
     return {
@@ -40,10 +44,17 @@ export default {
     }
   },
   methods: {
+    addTask(task) {
+      this.tasks = [...this.tasks, task]
+    },
     deleteTask(id) {
       if (confirm('Tem certeza que deseja remover essa tarefa?')) {
         this.tasks = this.tasks.filter((task) => task.id !== id);
       }
+    },
+    toggleReminder(id) {
+      this.tasks = this.tasks.map((task) => task.id === id
+      ? {...task, reminder: !task.reminder} : task) 
     }
   },
 }
@@ -60,7 +71,7 @@ export default {
 
 .btn {
   display: inline-block;
-  background: #000;
+  background: rgb(18, 131, 56);
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -74,7 +85,7 @@ export default {
 
 .container {
   width: 700px;
-  height: 500px;
+  height: auto;
   padding: 10px 20px;
   margin: 0 auto;
   border-radius: 20px;

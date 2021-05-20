@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <Header title="Task Tracker"/>
-    <Tasks :tasks="tasks" />
+    <Header title="Lista de Tarefas"/>
+    <Tasks @delete-task="deleteTask" :tasks="tasks" />
   </div>
 </template>
 
@@ -39,6 +39,13 @@ export default {
       ]
     }
   },
+  methods: {
+    deleteTask(id) {
+      if (confirm('Tem certeza que deseja remover essa tarefa?')) {
+        this.tasks = this.tasks.filter((task) => task.id !== id);
+      }
+    }
+  },
 }
 </script>
 
@@ -47,7 +54,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
@@ -71,8 +77,9 @@ export default {
   height: 500px;
   padding: 10px 20px;
   margin: 0 auto;
-  border: 1px solid black;
   border-radius: 20px;
+  background: rgb(236, 192, 111);
 }
+
 
 </style>

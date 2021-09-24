@@ -22,7 +22,7 @@ export default ({
     data() {
         return {
             text: '',
-            day: '',
+            dia: '',
             reminder: false,
         }
     },

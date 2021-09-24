@@ -24,20 +24,20 @@ export default {
       tasks: [
         {
           id: 1,
-          text: 'Doctors Appointment',
-          day: 'March 1st at 2:30pm',
+          text: 'Ir no shopping com minha esposa',
+          day: '24 de Setembro de 2021, às 14:00',
           reminder: true,
         },
         {
           id: 2,
-          text: 'Meeting at School',
-          day: 'March 3rd at 1:30pm',
+          text: 'Ir para a palestra na faculdade',
+          day: '27 de Setembro, às 20:00',
           reminder: true,
         },
         {
           id: 3,
-          text: 'Food Shopping',
-          day: 'March 3rd at 11:00am',
+          text: 'Correr 10 quilômetros',
+          day: '24 de Setembro às 18:00',
           reminder: false,
         }
       ]
